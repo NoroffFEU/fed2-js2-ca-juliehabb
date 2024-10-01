@@ -1,5 +1,33 @@
-export async function readPost(id) {}
+import { API_SOCIAL_POSTS } from "../constants.js";
+import { authFetch } from "../authFetch.js";
 
-export async function readPosts(limit = 12, page = 1, tag) {}
+
+export async function readPost(id) {
+    const getPostUrl = `${API_SOCIAL_POSTS}/${id}`
+
+    if(!id) {
+        throw new error ("get requires post ID")
+    }
+
+    const response = await authFetch(getPostUrl, {
+        method: "get",
+    });
+
+    return await response.json();
+}
+
+export async function readPosts(limit = 12, page = 1, tag) {
+    const getPostsUrl = API_SOCIAL_POSTS;
+
+    const response = await authFetch(getPostsUrl);
+
+    const posts = await response.json();
+
+    console.log(posts);
+}
 
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {}
+
+//readPosts();
+
+readPost(2441).then(console.log);
