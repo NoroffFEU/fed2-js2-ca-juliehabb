@@ -17,7 +17,7 @@ export async function getHeaders() {
 }
 
 // Behaves exactly like normal fetch, but includes headers (content type, authorization)
-export async function authFetch(url, options) {
+export async function authFetch(url, options = {}) {
     const headers = await getHeaders();
 
     return fetch(url, {
