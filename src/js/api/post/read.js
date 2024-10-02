@@ -23,11 +23,11 @@ export async function readPosts(limit = 12, page = 1, tag) {
 
     const posts = await response.json();
 
-    console.log(posts);
+    return posts.data
 }
 
 export async function readPostsByUser(username, limit = 12, page = 1, tag) {}
 
-//readPosts();
+//readPosts().then(console.log);
 
-readPost(2441).then(console.log);
+//readPost(2441).then(console.log);
