@@ -2,7 +2,9 @@ import { readPost } from "../../api/post/read.js";
 
 alert("Single Post Page");
 
-function renderPost(title, body, media, tags, container, maxLength = 250) {
+/**Adds blog post elements to page */
+
+function renderPost(title, body, media, tags, container) {
     const blogPostBlockElement = document.createElement("div");
     blogPostBlockElement.classList.add("post-container");
 

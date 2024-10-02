@@ -8,6 +8,8 @@ import { save } from "../auth/key.js";
 //1. insert url
 //2. return key
 
+/**Creates API key and saves it to header */
+
 // get an API key from the API
 export async function createKey() {
     const createKeyURL = API_AUTH_KEY;
@@ -24,6 +26,8 @@ export async function createKey() {
 }
 
 createKey();
+
+/**Creates new post using API */
 
 export async function createPost({ title, body, tags, media }) {
     const createPostUrl = API_SOCIAL_POSTS;

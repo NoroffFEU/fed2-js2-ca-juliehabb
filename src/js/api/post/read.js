@@ -1,7 +1,7 @@
 import { API_SOCIAL_POSTS } from "../constants.js";
 import { authFetch } from "../authFetch.js";
 
-
+/**Gets singular post from api */
 export async function readPost(id) {
     const getPostUrl = `${API_SOCIAL_POSTS}/${id}`
 
@@ -16,6 +16,7 @@ export async function readPost(id) {
     return await response.json();
 }
 
+/** Gets all posts from api */
 export async function readPosts(limit = 12, page = 1, tag) {
     const getPostsUrl = API_SOCIAL_POSTS;
 

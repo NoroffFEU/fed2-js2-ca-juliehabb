@@ -3,6 +3,8 @@ import { readPosts } from "../../api/post/read.js";
 
 //authGuard();
 
+/**Appends blog post elements to page */
+
 function renderPosts(id, title, body, media, tags, container, maxLength = 250) {
     const blogPostBlockElement = document.createElement("div");
     blogPostBlockElement.classList.add("post-container");
@@ -57,6 +59,7 @@ function renderPosts(id, title, body, media, tags, container, maxLength = 250) {
     container.appendChild(cardContainerElement);
 }
 
+/**Gets all necessary information from latest 12 posts */
 export async function createPostsDisplay() {
     const posts = await readPosts();
 
