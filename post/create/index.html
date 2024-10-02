@@ -10,7 +10,29 @@
     <h1>Create Post</h1>
 
     <form name="createPost">
+      <div>
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" required maxlength="100" placeholder="Please enter title">
+      </div>
+  
+      <div>
+        <label for="body">Body</label>
+        <textarea name=body"" id="body" required maxlength="1000" placeholder="Write your post here (max 1000 characters)"></textarea>
+      </div>
+  
+      <div>
+        <label for="tags">Tags</label>
+        <input type="text" name="tags" id="tags" placeholder="Enter tags separated by commas (e.g., tech, news, sports)" pattern="^[\w\s,]+$"
+        title="Please enter tags using letters, numbers, or commas">
+      </div>
+  
+      <div>
+        <label for="media"></label>
+        <input type="file" name="media" id="media" accept="image/png, image/jpeg, video/mp4">
+      </div>
+
       <button>Create Post</button>
+
     </form>
   </body>
 </html>
