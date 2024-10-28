@@ -1,15 +1,21 @@
 import { readPost } from "../../api/post/read.js";
 
-alert("Single Post Page");
 
-/**Adds blog post elements to page */
-
+/**
+ * Adds blog post elements to the specified container in the DOM.
+ *
+ * @param {string} title - The title of the blog post.
+ * @param {string} body - The body content of the blog post.
+ * @param {string|null} media - The URL of the media (image) associated with the post, or null if not available.
+ * @param {Array<string>} tags - An array of tags associated with the blog post.
+ * @param {HTMLElement} container - The DOM element where the post elements will be appended.
+ */
 function renderPost(title, body, media, tags, container) {
     const blogPostBlockElement = document.createElement("div");
     blogPostBlockElement.classList.add("post-container");
 
     const articleElement = document.createElement("article");
-
+   
     // Create media element (image) if media is available
     const mediaElement = document.createElement("img");
     if (media) {
@@ -47,20 +53,42 @@ function renderPost(title, body, media, tags, container) {
     container.appendChild(blogPostBlockElement);
 }
 
+/**
+ * Creates and displays a blog post by fetching its details from the API and rendering it to the page.
+ *
+ * @async
+ * @function createPostDisplay
+ * @returns {Promise<void>} A promise that resolves when the post has been displayed.
+ *
+ * @throws {Error} Throws an error if the post cannot be retrieved.
+ *
+ * @example
+ * // Example usage:
+ * createPostDisplay()
+ *   .then(() => {
+ *     console.log('Post displayed successfully.');
+ *   })
+ *   .catch(error => {
+ *     console.error('Error displaying post:', error);
+ *   });
+ */
 export async function createPostDisplay() {
     const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
+    const id = urlParams.get("id");
 
-    const post = await readPost(id);
+    const postResponse = await readPost(id);
+    const post = postResponse.data;
 
-    const container = document.querySelector(".post-container")
+    const container = document.querySelector(".post-container");
 
     const title = post.title;
     const body = post.body;
-    const media = post.media ? post.media : null;
-    const tags = post.tags.length > 0 ? post.tags : ["No tags"];
+    const media = post.media ? post.media.url : null;
 
-    renderPost(id, title, body, media, tags, container, 200 )
+    const tags = Array.isArray(post.tags) && post.tags.length > 0 ? post.tags : ["no tags"];
+
+    renderPost(title, body, media, tags, container, id);
+   
 }
 
 createPostDisplay()
