@@ -4,10 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noroff FED2 JS2 CA</title>
-    <script type="module" src="/src/js/api/post/create.js"></script>
+    <script type="module" src="/src/js/router/views/postCreate.js"></script>
   </head>
   <body>
-    <a href="/index.html"><img src="/images/noroff-logo.png" alt="Noroff Logo" /></a>
     <h1>Create Post</h1>
 
     <form name="createPost">
@@ -28,11 +27,11 @@
       </div>
   
       <div>
-        <label for="media"></label>
-        <input type="file" name="media" id="media" accept="image/png, image/jpeg, video/mp4">
+        <label for="media">Media URL</label>
+        <input type="text" name="media" id="media" placeholder="Enter media URL">
       </div>
 
-      <button>Create Post</button>
+      <button type="submit">Create Post</button>
 
     </form>
   </body>

@@ -5,11 +5,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noroff FED2 JS2 CA</title>
-    <script type="module" src="/src/js/api/post/update.js"></script>
+    <script type="module" src="/src/js/router/views/postEdit.js"></script>
   </head>
 
   <body>
-    <a href="/index.html"><img src="/images/noroff-logo.png" alt="Noroff Logo" /></a>
     <h1>Edit Post</h1>
 
     <form name="editPost">
@@ -31,8 +30,8 @@
       </div>
   
       <div>
-        <label for="media"></label>
-        <input type="file" name="media" id="media" accept="image/png, image/jpeg, video/mp4">
+        <label for="media">Media URL</label>
+        <input type="text" name="media" id="media" >
       </div>
 
       <button>Edit Post</button>
