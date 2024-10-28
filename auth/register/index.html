@@ -5,10 +5,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noroff FED2 JS2 CA</title>
-    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/js/handlers/register.js"></script>
+
   </head>
 
   <body>
+    <a href="/index.html"><img src="/images/noroff-logo.png" alt="Noroff Logo" /></a>
     <h1>Register</h1>
 
     <form name="register">
@@ -22,6 +24,7 @@
           maxlength="20"
           pattern="^[\w]+$"
           title="Please enter a username using only letters and numbers"
+          value="Juliehabb"
         />
       </div>
 
@@ -34,6 +37,7 @@
           required
           pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
           title="Please enter a valid noroff.no or stud.noroff.no address"
+          value="julie.habb@noroff.no"
         />
       </div>
 
@@ -45,6 +49,36 @@
           id="password"
           required
           minlength="8"
+          value="julieHabb321!"
+        />
+      </div>
+
+      <div>
+        <label for="bio">Bio</label>
+        <textarea
+          id="bio"
+          name="bio"
+          rows="4"
+          maxlength="200"
+          placeholder="Tell us a little about yourself (max 200 characters)"
+        ></textarea>
+      </div>
+
+      <div>
+        <label for="banner">Banner</label>
+        <input
+          type="text"
+          id="banner"
+          name="banner"
+        />
+      </div>
+
+      <div>
+        <label for="avatar">Profile Picture (Avatar)</label>
+        <input
+          type="text"
+          id="avatar"
+          name="avatar"
         />
       </div>
 
