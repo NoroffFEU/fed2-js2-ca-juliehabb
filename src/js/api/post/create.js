@@ -4,13 +4,22 @@ import { API_AUTH_KEY } from "../constants.js";
 import { save } from "../auth/key.js";
 
 
-// get an api key from api
-//1. insert url
-//2. return key
-
-/**Creates API key and saves it to header */
-
-// get an API key from the API
+/**
+ * Creates an API key by sending a POST request to the authentication API.
+ * The retrieved API key is then saved to local storage.
+ * 
+ * @async
+ * @function createKey
+ * @returns {Promise<void>} A promise that resolves when the API key has been saved.
+ * 
+ * @example
+ * // Example usage:
+ * createKey().then(() => {
+ *   console.log('API key created and saved.');
+ * }).catch(error => {
+ *   console.error('Error creating API key:', error);
+ * });
+ */
 export async function createKey() {
     const createKeyURL = API_AUTH_KEY;
     
@@ -20,21 +29,47 @@ export async function createKey() {
     });
 
     const apiKey = await response.json();
-    console.log(apiKey);
 
     save("apiKey", apiKey.data.key);
 }
 
 createKey();
 
-/**Creates new post using API */
 
+/** 
+ * Creates a new post using the social API.
+ * 
+ * @async
+ * @function createPost
+ * @param {Object} postDetails - The details of the post to be created.
+ * @param {string} postDetails.title - The title of the post.
+ * @param {string} postDetails.body - The body content of the post.
+ * @param {Array<string>} postDetails.tags - An array of tags associated with the post.
+ * @param {Array<string>} [postDetails.media] - An optional array of media URLs associated with the post.
+ * @returns {Promise<Object>} A promise that resolves to the created post object.
+ * 
+ * @example
+ * // Example usage:
+ * createPost({
+ *   title: 'My First Post',
+ *   body: 'This is the body of my first post.',
+ *   tags: ['introduction', 'firstPost'],
+ *   media: ['https://example.com/image.jpg']
+ * }).then(post => {
+ *   console.log('Post created:', post);
+ * }).catch(error => {
+ *   console.error('Error creating post:', error);
+ * });
+ */
 export async function createPost({ title, body, tags, media }) {
     const createPostUrl = API_SOCIAL_POSTS;
     
     const response = await authFetch (createPostUrl, {
 
         method: "post",
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
             title,
             body,
@@ -45,15 +80,10 @@ export async function createPost({ title, body, tags, media }) {
 
     const post =  await response.json();
 
-    console.log(post);
+    return post;
 
 }
 
 
-createPost ({
-    title: "test post",
-    body: "random text"
-});
 
-console.log(post);
 
